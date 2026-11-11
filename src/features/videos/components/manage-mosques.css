@@ -1,0 +1,245 @@
+.manage-page {
+  display: grid;
+  gap: 20px;
+}
+
+.manage-toolbar {
+  padding: 22px 24px;
+}
+
+.manage-toolbar-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.manage-toolbar-head h3 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  font-size: 18px;
+}
+
+.manage-toolbar-head p {
+  margin: 6px 0 0;
+  color: var(--mute);
+  font-size: 13px;
+}
+
+.manage-add-slot {
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.manage-add-slot .add-form {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.manage-filters {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.manage-table-wrap {
+  overflow: hidden;
+}
+
+.manage-table-head {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.manage-table-head h4 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 15px;
+}
+
+.manage-table-scroll {
+  overflow-x: auto;
+}
+
+.manage-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.manage-table th,
+.manage-table td {
+  padding: 14px 16px;
+  text-align: start;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  font-size: 13px;
+}
+
+.manage-table th {
+  font-size: 12px;
+  color: var(--mute);
+  background: color-mix(in srgb, var(--bg) 55%, var(--surface));
+  font-weight: 700;
+}
+
+.manage-name {
+  display: block;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.manage-sublink {
+  display: inline-block;
+  margin-top: 4px;
+  margin-inline-end: 10px;
+  font-size: 12px;
+  color: var(--primary-btn);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.manage-sublink:hover {
+  text-decoration: underline;
+}
+
+.manage-source {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--mute-strong);
+  background: color-mix(in srgb, var(--bg) 70%, var(--surface));
+  border: 1px solid var(--line);
+}
+
+.manage-source.is-local {
+  color: var(--primary-btn);
+  background: var(--primary-soft);
+  border-color: color-mix(in srgb, var(--primary-btn) 22%, var(--line));
+}
+
+.manage-row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.manage-row-actions .btn {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.manage-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(0, 0, 0, 0.48);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.manage-drawer,
+.manage-confirm {
+  width: min(640px, 100%);
+  max-height: min(90vh, 820px);
+  overflow: auto;
+  padding: 22px;
+}
+
+.manage-confirm {
+  width: min(420px, 100%);
+  text-align: center;
+}
+
+.manage-confirm h3 {
+  margin: 0 0 10px;
+  color: var(--primary);
+}
+
+.manage-confirm p {
+  margin: 0 0 18px;
+  color: var(--mute);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.manage-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.manage-drawer-head h3 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  font-size: 17px;
+}
+
+.manage-drawer-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--mute-strong);
+  cursor: pointer;
+}
+
+.manage-edit-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.manage-edit-grid .field-span {
+  grid-column: 1 / -1;
+}
+
+.manage-drawer-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.req {
+  color: var(--danger);
+}
+
+@media (min-width: 768px) {
+  .manage-filters {
+    grid-template-columns: 1.4fr 1fr;
+  }
+
+  .manage-edit-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

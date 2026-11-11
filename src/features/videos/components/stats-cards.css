@@ -1,0 +1,131 @@
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.stats-card {
+  position: relative;
+  min-height: 112px;
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.stats-card:hover {
+  border-color: color-mix(in srgb, var(--primary-btn) 22%, var(--line));
+  box-shadow: 0 10px 22px var(--shadow);
+}
+
+.stats-copy {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.stats-label {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: var(--mute);
+  font-weight: 700;
+}
+
+.stats-value {
+  display: block;
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.stats-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+  border: 1px solid var(--line);
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.stats-icon.gold {
+  background: var(--gold-soft);
+  color: var(--gold-dark, #8a7132);
+  border-color: color-mix(in srgb, var(--gold) 28%, var(--line));
+}
+
+.stats-icon.status {
+  background: color-mix(in srgb, #0b735d 12%, #fff);
+  color: #0b735d;
+  border-color: color-mix(in srgb, #0b735d 22%, var(--line));
+}
+
+html.dark .stats-icon.status {
+  background: color-mix(in srgb, #0b735d 35%, var(--surface));
+  color: #d8f3e8;
+}
+
+.stats-status {
+  background: var(--surface);
+}
+
+.stats-status .stats-label {
+  color: var(--mute);
+}
+
+.status-ok {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  margin: 0 !important;
+  font-size: 18px !important;
+  line-height: 1.25;
+  color: #14533d;
+  font-weight: 700;
+}
+
+html.dark .status-ok {
+  color: #d8f3e8;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0b735d;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #0b735d 18%, transparent);
+}
+
+.status-meta {
+  font-size: 12px;
+  color: var(--mute);
+  font-weight: 600;
+}
+
+@media (min-width: 640px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stats-card {
+    transition: none;
+  }
+}

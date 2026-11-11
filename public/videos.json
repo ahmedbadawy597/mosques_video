@@ -1,0 +1,35 @@
+[
+  {
+    "id": "bb05b26addb6450e81d6f28a27b2083b-n-uMM6Yo",
+    "storyId": "bb05b26addb6450e81d6f28a27b2083b",
+    "name": "مسجد سيدي احمد الرفاعي رضي الله عنه",
+    "governorate": "محافظة القاهرة",
+    "date": "غير محدد",
+    "mapUrl": "https://www.google.com/maps?q=30.032664,31.257635&z=18",
+    "videoUrl": "https://geoportal.strategizeit.us/arcgis/sharing/rest/content/items/bb05b26addb6450e81d6f28a27b2083b/resources/KKm03NkbPqZN41uGTKxop.mp4",
+    "videoType": "mp4",
+    "storyUrl": "https://geoportal.strategizeit.us/arcgis/apps/storymaps/stories/bb05b26addb6450e81d6f28a27b2083b?locale=ar"
+  },
+  {
+    "id": "cdad0a1cdcc54372b7b2b18c7d1513d0-n-uMM6Yo",
+    "storyId": "cdad0a1cdcc54372b7b2b18c7d1513d0",
+    "name": "مسجد السيده سكينة رضي الله عنها",
+    "governorate": "محافظة القاهرة",
+    "date": "غير محدد",
+    "mapUrl": "https://www.google.com/maps?q=30.026953,31.252199&z=19",
+    "videoUrl": "https://geoportal.strategizeit.us/arcgis/sharing/rest/content/items/cdad0a1cdcc54372b7b2b18c7d1513d0/resources/F3WM0Yu0QGpBygxNNkkV4.mp4",
+    "videoType": "mp4",
+    "storyUrl": "https://geoportal.strategizeit.us/arcgis/apps/storymaps/stories/cdad0a1cdcc54372b7b2b18c7d1513d0?locale=ar"
+  },
+  {
+    "id": "dee85ed1477c49f9a2dcbcd1d3ae4a53-n-uMM6Yo",
+    "storyId": "dee85ed1477c49f9a2dcbcd1d3ae4a53",
+    "name": "مسجد السيده نفيسة رضي الله عنها",
+    "governorate": "محافظة القاهرة",
+    "date": "غير محدد",
+    "mapUrl": "https://www.google.com/maps?q=30.022788,31.253235&z=18",
+    "videoUrl": "https://geoportal.strategizeit.us/arcgis/sharing/rest/content/items/dee85ed1477c49f9a2dcbcd1d3ae4a53/resources/NgpR6qr5jsPWMUsYnMwHo.mp4",
+    "videoType": "mp4",
+    "storyUrl": "https://geoportal.strategizeit.us/arcgis/apps/storymaps/stories/dee85ed1477c49f9a2dcbcd1d3ae4a53?locale=ar"
+  }
+]
