@@ -175,6 +175,64 @@ export function ManageMosquesPanel() {
             <span className="badge">{filtered.length} مسجد</span>
           </div>
 
+          <div className="manage-mobile-list">
+            {filtered.map((video) => {
+              const mapHref = isSpecified(video.mapUrl)
+                ? toSafeHref(video.mapUrl)
+                : null
+              const storyHref = isSpecified(video.storyUrl)
+                ? toSafeHref(video.storyUrl)
+                : null
+              return (
+                <article key={video.id} className="manage-mobile-card">
+                  <div className="manage-mobile-card-top">
+                    <h5>{video.name}</h5>
+                    <span
+                      className={`manage-source ${video.isLocal ? 'is-local' : ''}`}
+                    >
+                      {video.isLocal ? 'محفوظ محلياً' : 'الكتالوج'}
+                    </span>
+                  </div>
+                  <p className="manage-mobile-meta">
+                    {video.governorate}
+                    <span aria-hidden>·</span>
+                    {video.date}
+                  </p>
+                  <div className="manage-mobile-links">
+                    {mapHref ? (
+                      <a href={mapHref} target="_blank" rel="noreferrer">
+                        الموقع
+                      </a>
+                    ) : null}
+                    {storyHref ? (
+                      <a href={storyHref} target="_blank" rel="noreferrer">
+                        StoryMap
+                      </a>
+                    ) : null}
+                  </div>
+                  <div className="manage-row-actions">
+                    <Button
+                      type="button"
+                      variant="soft"
+                      onClick={() => setEditing({ ...video })}
+                    >
+                      <i className="fa-solid fa-pen" aria-hidden />
+                      تعديل
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="danger"
+                      onClick={() => setPendingDelete(video)}
+                    >
+                      <i className="fa-solid fa-trash" aria-hidden />
+                      حذف
+                    </Button>
+                  </div>
+                </article>
+              )
+            })}
+          </div>
+
           <div className="manage-table-scroll">
             <table className="manage-table">
               <thead>
@@ -188,7 +246,9 @@ export function ManageMosquesPanel() {
               </thead>
               <tbody>
                 {filtered.map((video) => {
-                  const mapHref = toSafeHref(video.mapUrl)
+                  const mapHref = isSpecified(video.mapUrl)
+                    ? toSafeHref(video.mapUrl)
+                    : null
                   return (
                     <tr key={video.id}>
                       <td>

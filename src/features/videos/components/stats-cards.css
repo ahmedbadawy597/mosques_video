@@ -6,13 +6,21 @@
 
 .stats-card {
   position: relative;
-  min-height: 112px;
-  padding: 20px 22px;
+  min-height: 96px;
+  padding: 16px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+@media (min-width: 640px) {
+  .stats-card {
+    min-height: 112px;
+    padding: 20px 22px;
+    gap: 16px;
+  }
 }
 
 .stats-card:hover {
@@ -38,7 +46,7 @@
 .stats-value {
   display: block;
   margin: 0;
-  font-size: 30px;
+  font-size: clamp(24px, 6vw, 30px);
   line-height: 1.15;
   font-weight: 700;
   color: var(--primary);

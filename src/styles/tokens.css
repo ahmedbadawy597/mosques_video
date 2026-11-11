@@ -17,7 +17,8 @@
   --shadow: #14533d22;
   --radius: 16px;
   --radius-sm: 12px;
-  --font-body: 'Amiri', 'Traditional Arabic', 'Times New Roman', serif;
+  --font-body: 'Amiri', 'Traditional Arabic', 'Scheherazade New', 'Times New Roman', serif;
+  --font-display: 'Amiri', 'Traditional Arabic', serif;
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;

@@ -4,7 +4,13 @@
 }
 
 .manage-toolbar {
-  padding: 22px 24px;
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  .manage-toolbar {
+    padding: 22px 24px;
+  }
 }
 
 .manage-toolbar-head {
@@ -71,8 +77,62 @@
   font-size: 15px;
 }
 
+.manage-mobile-list {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+}
+
+.manage-mobile-card {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--bg) 45%, var(--surface));
+  display: grid;
+  gap: 10px;
+}
+
+.manage-mobile-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.manage-mobile-card-top h5 {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--primary);
+}
+
+.manage-mobile-meta {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  font-size: 12px;
+  color: var(--mute-strong);
+  font-weight: 700;
+}
+
+.manage-mobile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.manage-mobile-links a {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-btn);
+  text-decoration: none;
+}
+
 .manage-table-scroll {
+  display: none;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .manage-table {
@@ -152,16 +212,18 @@
   z-index: 60;
   background: rgba(0, 0, 0, 0.48);
   display: grid;
-  place-items: center;
-  padding: 16px;
+  place-items: end center;
+  padding: 0;
 }
 
 .manage-drawer,
 .manage-confirm {
-  width: min(640px, 100%);
-  max-height: min(90vh, 820px);
+  width: 100%;
+  max-height: min(92dvh, 820px);
   overflow: auto;
-  padding: 22px;
+  -webkit-overflow-scrolling: touch;
+  padding: 18px 16px calc(18px + env(safe-area-inset-bottom, 0px));
+  border-radius: 18px 18px 0 0;
 }
 
 .manage-confirm {
@@ -222,12 +284,16 @@
 
 .manage-drawer-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: stretch;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 20px;
   padding-top: 14px;
   border-top: 1px solid var(--line);
+}
+
+.manage-drawer-actions .btn {
+  flex: 1 1 140px;
 }
 
 .req {
@@ -237,6 +303,38 @@
 @media (min-width: 768px) {
   .manage-filters {
     grid-template-columns: 1.4fr 1fr;
+  }
+
+  .manage-mobile-list {
+    display: none;
+  }
+
+  .manage-table-scroll {
+    display: block;
+  }
+
+  .manage-drawer-backdrop {
+    place-items: center;
+    padding: 16px;
+  }
+
+  .manage-drawer,
+  .manage-confirm {
+    width: min(640px, 100%);
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+
+  .manage-confirm {
+    width: min(420px, 100%);
+  }
+
+  .manage-drawer-actions {
+    justify-content: flex-end;
+  }
+
+  .manage-drawer-actions .btn {
+    flex: 0 0 auto;
   }
 
   .manage-edit-grid {

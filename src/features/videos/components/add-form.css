@@ -1,7 +1,7 @@
 .add-form {
   max-width: 920px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 16px;
 }
 
 .add-form--embedded {
@@ -22,7 +22,7 @@
   align-items: center;
   gap: 10px;
   color: var(--primary);
-  font-size: 20px;
+  font-size: clamp(16px, 4vw, 20px);
 }
 
 .add-form-header p {
@@ -35,7 +35,7 @@
 
 .import-panel {
   margin-bottom: 22px;
-  padding: 18px;
+  padding: 14px;
   border-radius: var(--radius);
   border: 1px solid color-mix(in srgb, var(--primary-btn) 22%, var(--line));
   background:
@@ -218,11 +218,15 @@
 .add-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: stretch;
   gap: 10px;
   padding-top: 16px;
   border-top: 1px solid var(--line);
   margin-top: 20px;
+}
+
+.add-actions .btn {
+  flex: 1 1 140px;
 }
 
 @media (min-width: 768px) {

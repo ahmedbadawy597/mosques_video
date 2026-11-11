@@ -10,6 +10,13 @@ html,
 body,
 #root {
   min-height: 100%;
+  min-height: 100dvh;
+}
+
+html {
+  font-family: var(--font-body);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -17,8 +24,32 @@ body {
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--ink);
-  line-height: 1.6;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body.is-drawer-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+button,
+input,
+select,
+textarea,
+.btn,
+.badge,
+table,
+th,
+td,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
 }
 
 button,
@@ -63,6 +94,7 @@ html.dark ::-webkit-scrollbar-thumb {
 .app-shell {
   display: flex;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -72,18 +104,54 @@ html.dark ::-webkit-scrollbar-thumb {
   flex-direction: column;
   min-width: 0;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
 .main-scroll {
   flex: 1;
   overflow: auto;
-  padding: var(--space-4);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: max(12px, env(safe-area-inset-top, 0px))
+    max(12px, env(safe-area-inset-inline-end, 0px))
+    max(20px, env(safe-area-inset-bottom, 0px))
+    max(12px, env(safe-area-inset-inline-start, 0px));
+}
+
+.page-stack {
+  display: grid;
+  gap: 20px;
 }
 
 @media (min-width: 768px) {
   .main-scroll {
     padding: var(--space-8);
+  }
+
+  .page-stack {
+    gap: 32px;
+  }
+}
+
+/* Comfortable tap targets on touch devices */
+@media (pointer: coarse) {
+  .btn,
+  .menu-btn,
+  .video-btn,
+  .filters-clear,
+  .theme-segment-btn,
+  .sidebar-link {
+    min-height: 44px;
+  }
+
+  .field input,
+  .field select,
+  .input,
+  .select,
+  .search-wrap input,
+  .select-wrap select {
+    min-height: 46px;
   }
 }
 

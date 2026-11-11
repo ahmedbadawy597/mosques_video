@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { Sidebar } from './Sidebar'
 import { TopBar } from './TopBar'
@@ -19,6 +19,15 @@ export function AppShell() {
     () => TITLES[location.pathname] ?? APP_FALLBACK_TITLE,
     [location.pathname],
   )
+
+  useEffect(() => {
+    setSidebarOpen(false)
+  }, [location.pathname])
+
+  useEffect(() => {
+    document.body.classList.toggle('is-drawer-open', sidebarOpen)
+    return () => document.body.classList.remove('is-drawer-open')
+  }, [sidebarOpen])
 
   return (
     <div className="app-shell">

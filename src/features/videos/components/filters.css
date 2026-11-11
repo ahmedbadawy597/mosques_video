@@ -1,12 +1,12 @@
 .filters-bar {
-  padding: 18px 20px;
+  padding: 14px 14px 16px;
 }
 
 .filters-head {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   margin-bottom: 14px;
 }
 
@@ -46,11 +46,12 @@
   background: transparent;
   color: var(--mute-strong);
   border-radius: 999px;
-  padding: 7px 12px;
+  padding: 8px 12px;
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
+  flex-shrink: 0;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
@@ -167,6 +168,12 @@ html.dark .select-wrap select option {
   width: 100%;
 }
 
+@media (min-width: 640px) {
+  .filters-bar {
+    padding: 18px 20px;
+  }
+}
+
 @media (min-width: 860px) {
   .filters-row {
     grid-template-columns: minmax(0, 1.6fr) minmax(220px, 0.8fr);
@@ -177,14 +184,14 @@ html.dark .select-wrap select option {
 
 .home-videos-section {
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 
 .home-videos-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
 }
 
 .home-videos-head h3 {
@@ -193,7 +200,8 @@ html.dark .select-wrap select option {
   align-items: center;
   gap: 8px;
   color: var(--primary);
-  font-size: 16px;
+  font-size: clamp(14px, 3.6vw, 16px);
+  min-width: 0;
 }
 
 .home-videos-head h3 i {

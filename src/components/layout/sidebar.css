@@ -1,5 +1,6 @@
 .sidebar {
-  width: 300px;
+  width: min(300px, 88vw);
+  max-width: 100%;
   background:
     linear-gradient(180deg, rgba(232, 245, 239, 0.55) 0%, transparent 180px),
     var(--surface);
@@ -9,12 +10,16 @@
   flex-direction: column;
   z-index: 30;
   height: 100%;
+  height: 100dvh;
+  padding-block: env(safe-area-inset-top, 0px) env(safe-area-inset-bottom, 0px);
   /* Mobile drawer: park on the RTL start side (right in Arabic) */
   position: fixed;
   inset-block: 0;
   inset-inline-start: 0;
   transform: translateX(100%);
   transition: transform 0.25s ease;
+  overflow: hidden;
+  overscroll-behavior: contain;
 }
 
 html.dark .sidebar {
@@ -246,7 +251,10 @@ html.dark .theme-segment-btn.is-active {
 
 @media (min-width: 1024px) {
   .sidebar {
+    width: 300px;
     position: static;
+    height: 100%;
+    padding-block: 0;
     transform: none !important;
   }
 

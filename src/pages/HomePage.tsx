@@ -41,7 +41,7 @@ export function HomePage() {
   }
 
   return (
-    <div style={{ display: 'grid', gap: 32 }}>
+    <div className="page-stack">
       <StatsCards stats={stats} />
       <HomeFilters
         search={search}

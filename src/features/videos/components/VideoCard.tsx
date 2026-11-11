@@ -1,8 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import {
-  VideoPlayer,
-  type VideoPlayerHandle,
-} from '@/components/media/VideoPlayer'
+import { VideoPlayer } from '@/components/media/VideoPlayer'
 import { APP_CONFIG } from '@/config/app'
 import { isSpecified } from '@/utils/isSpecified'
 import { toSafeHref } from '@/utils/safeUrl'
@@ -15,7 +12,6 @@ interface VideoCardProps {
 
 export function VideoCard({ video }: VideoCardProps) {
   const rootRef = useRef<HTMLElement | null>(null)
-  const playerRef = useRef<VideoPlayerHandle | null>(null)
   const [active, setActive] = useState(false)
 
   useEffect(() => {
@@ -44,58 +40,71 @@ export function VideoCard({ video }: VideoCardProps) {
 
   const mapHref = isSpecified(video.mapUrl) ? toSafeHref(video.mapUrl) : null
   const storyHref = isSpecified(video.storyUrl) ? toSafeHref(video.storyUrl) : null
+  const governorate = video.governorate || APP_CONFIG.unspecified
+  const dateLabel = video.date || APP_CONFIG.unspecified
 
   return (
-    <article ref={rootRef} className="video-card surface-card">
-      <VideoPlayer
-        ref={playerRef}
-        id={video.id}
-        name={video.name}
-        videoUrl={video.videoUrl}
-        videoType={video.videoType}
-        storyUrl={video.storyUrl}
-        governorate={video.governorate || APP_CONFIG.unspecified}
-        active={active}
-      />
+    <article ref={rootRef} className="video-card">
+      <div className="video-card-media">
+        <VideoPlayer
+          id={video.id}
+          name={video.name}
+          videoUrl={video.videoUrl}
+          videoType={video.videoType}
+          storyUrl={video.storyUrl}
+          governorate={governorate}
+          active={active}
+          showGovernorate={false}
+        />
+      </div>
 
       <div className="video-card-body">
-        <div>
-          <h3>{video.name || APP_CONFIG.unspecified}</h3>
-          <p>
-            <i className="fa-regular fa-calendar-days" aria-hidden />
-            تاريخ التصوير: {video.date || APP_CONFIG.unspecified}
-          </p>
-        </div>
+        <p className="video-card-eyebrow">{governorate}</p>
+        <h3 className="video-card-title">
+          {video.name || APP_CONFIG.unspecified}
+        </h3>
 
-        <div className="video-card-actions">
+        <dl className="video-card-facts">
+          <div>
+            <dt>تاريخ التصوير</dt>
+            <dd>{dateLabel}</dd>
+          </div>
+        </dl>
+
+        <div className="video-card-actions" role="group" aria-label="روابط المسجد">
           {mapHref ? (
-            <a className="btn btn-soft" href={mapHref} target="_blank" rel="noopener noreferrer">
+            <a
+              className="video-btn video-btn-secondary"
+              href={mapHref}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fa-solid fa-location-dot" aria-hidden />
-              موقع جوجل ماب
+              عرض الموقع
             </a>
           ) : (
-            <span className="btn btn-muted" aria-disabled="true">
+            <span className="video-btn video-btn-secondary is-disabled" aria-disabled="true">
               <i className="fa-solid fa-location-dot" aria-hidden />
-              {APP_CONFIG.unspecified}
+              غير متاح
             </span>
           )}
 
           {storyHref ? (
-            <a className="btn btn-gold" href={storyHref} target="_blank" rel="noopener noreferrer">
+            <a
+              className="video-btn video-btn-primary"
+              href={storyHref}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fa-solid fa-book-open" aria-hidden />
-              فتح خريطة القصة
+              خريطة القصة
             </a>
-          ) : null}
-
-          <button
-            type="button"
-            className="btn btn-soft"
-            onClick={() => playerRef.current?.requestFullscreen()}
-            disabled={!active}
-          >
-            <i className="fa-solid fa-expand" aria-hidden />
-            ملء الشاشة
-          </button>
+          ) : (
+            <span className="video-btn video-btn-primary is-disabled" aria-disabled="true">
+              <i className="fa-solid fa-book-open" aria-hidden />
+              غير متاح
+            </span>
+          )}
         </div>
       </div>
     </article>
