@@ -242,6 +242,67 @@ html.dark .theme-segment-btn.is-active {
   outline-offset: 1px;
 }
 
+.sidebar-auth-box {
+  display: grid;
+  gap: 8px;
+}
+
+.sidebar-auth-user {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--mute-strong);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar-auth-user i {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.sidebar-auth-btn,
+.sidebar-auth-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 12px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sidebar-auth-btn {
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 55%, var(--surface));
+  color: var(--mute-strong);
+}
+
+.sidebar-auth-btn:hover {
+  color: var(--primary);
+  border-color: color-mix(in srgb, var(--primary-btn) 28%, var(--line));
+  background: var(--primary-soft);
+}
+
+.sidebar-auth-link {
+  border: 1px solid color-mix(in srgb, var(--primary-btn) 22%, var(--line));
+  background: var(--primary-soft);
+  color: var(--primary-btn);
+}
+
+.sidebar-auth-link:hover {
+  filter: brightness(0.98);
+}
+
 .powered {
   margin: 0;
   text-align: center;

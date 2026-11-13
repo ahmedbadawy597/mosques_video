@@ -15,6 +15,10 @@ export default defineConfig({
   server: {
     port: 5174,
     proxy: {
+      '/v1': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
       '/arcgis-portal': {
         target: 'https://geoportal.strategizeit.us',
         changeOrigin: true,

@@ -2,6 +2,7 @@ import { lazy, Suspense, type ReactNode } from 'react'
 import { Navigate, useRoutes } from 'react-router-dom'
 import { AppShell } from '@/components/layout/AppShell'
 import { LoadingState } from '@/components/common/LoadingState'
+import { AssistantRoute } from './AssistantRoute'
 
 const HomePage = lazy(() =>
   import('@/pages/HomePage').then((m) => ({ default: m.HomePage })),
@@ -14,13 +15,28 @@ const ManageMosquesPage = lazy(() =>
 const ReportsPage = lazy(() =>
   import('@/pages/ReportsPage').then((m) => ({ default: m.ReportsPage })),
 )
+const LoginPage = lazy(() =>
+  import('@/pages/LoginPage').then((m) => ({ default: m.LoginPage })),
+)
 
 function SuspensePage({ children }: { children: ReactNode }) {
-  return <Suspense fallback={<LoadingState message="جاري تجهيز الصفحة..." />}>{children}</Suspense>
+  return (
+    <Suspense fallback={<LoadingState message="جاري تجهيز الصفحة..." />}>
+      {children}
+    </Suspense>
+  )
 }
 
 export function AppRouter() {
   return useRoutes([
+    {
+      path: '/login',
+      element: (
+        <SuspensePage>
+          <LoginPage />
+        </SuspensePage>
+      ),
+    },
     {
       path: '/',
       element: <AppShell />,
@@ -40,9 +56,11 @@ export function AppRouter() {
         {
           path: 'manage',
           element: (
-            <SuspensePage>
-              <ManageMosquesPage />
-            </SuspensePage>
+            <AssistantRoute>
+              <SuspensePage>
+                <ManageMosquesPage />
+              </SuspensePage>
+            </AssistantRoute>
           ),
         },
         {

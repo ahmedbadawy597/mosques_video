@@ -1,0 +1,140 @@
+.login-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 28px 16px;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in srgb, var(--primary-soft) 80%, transparent), transparent),
+    var(--bg);
+}
+
+.login-panel {
+  width: min(28rem, 100%);
+  padding: 32px 28px 24px;
+}
+
+.login-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.login-hero img {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  margin-bottom: 14px;
+}
+
+.login-org {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--mute);
+}
+
+.login-hero h1 {
+  margin: 8px 0 0;
+  font-size: 24px;
+  line-height: 1.35;
+  color: var(--primary);
+}
+
+.login-hero p {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--mute);
+  line-height: 1.55;
+  max-width: 28ch;
+}
+
+.login-form {
+  display: grid;
+  gap: 14px;
+}
+
+.login-field {
+  display: grid;
+  gap: 8px;
+}
+
+.login-field > span {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--mute-strong);
+  text-align: start;
+}
+
+.login-pass {
+  position: relative;
+}
+
+.login-pass .input {
+  padding-inline-end: 44px;
+}
+
+.login-eye {
+  position: absolute;
+  inset-inline-end: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: var(--mute);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.login-eye:hover {
+  color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.login-error {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: color-mix(in srgb, #b42318 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, #b42318 28%, var(--line));
+  color: #912018;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+html.dark .login-error {
+  color: #fecaca;
+}
+
+.login-submit {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 4px;
+}
+
+.login-back {
+  display: block;
+  margin-top: 18px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-btn);
+  text-decoration: none;
+}
+
+.login-back:hover {
+  text-decoration: underline;
+}
+
+.login-powered {
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 11px;
+  color: var(--mute);
+}
