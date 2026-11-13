@@ -10,6 +10,7 @@ interface ReportDocumentProps {
   filterSummary: string
   /** Compact paper-like preview styling */
   preview?: boolean
+  onOpenVideo?: (video: VideoRecord) => void
 }
 
 export function ReportDocument({
@@ -18,6 +19,7 @@ export function ReportDocument({
   generatedAt,
   filterSummary,
   preview = false,
+  onOpenVideo,
 }: ReportDocumentProps) {
   return (
     <article
@@ -90,12 +92,13 @@ export function ReportDocument({
               <th scope="col">تاريخ التصوير</th>
               <th scope="col">الموقع الجغرافي</th>
               <th scope="col">خريطة القصة</th>
+              <th scope="col">الفيديو</th>
             </tr>
           </thead>
           <tbody>
             {videos.length === 0 ? (
               <tr>
-                <td colSpan={6} className="empty-cell">
+                <td colSpan={7} className="empty-cell">
                   لا توجد بيانات مطابقة لخيارات الاستعلام الحالية
                 </td>
               </tr>
@@ -106,6 +109,9 @@ export function ReportDocument({
                   : null
                 const storyHref = isSpecified(item.storyUrl)
                   ? toSafeHref(item.storyUrl)
+                  : null
+                const videoHref = isSpecified(item.videoUrl)
+                  ? toSafeHref(item.videoUrl)
                   : null
 
                 return (
@@ -144,6 +150,33 @@ export function ReportDocument({
                           <i className="fa-solid fa-book-open" aria-hidden />
                           StoryMap
                         </a>
+                      ) : (
+                        <span className="muted">{APP_CONFIG.unspecified}</span>
+                      )}
+                    </td>
+                    <td>
+                      {videoHref ? (
+                        <>
+                          {onOpenVideo ? (
+                            <button
+                              type="button"
+                              className="reports-video-btn no-print"
+                              onClick={() => onOpenVideo(item)}
+                            >
+                              <i className="fa-solid fa-play" aria-hidden />
+                              فتح الفيديو
+                            </button>
+                          ) : null}
+                          <a
+                            className={`reports-link${onOpenVideo ? ' print-only' : ''}`}
+                            href={videoHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <i className="fa-solid fa-play" aria-hidden />
+                            فتح الفيديو
+                          </a>
+                        </>
                       ) : (
                         <span className="muted">{APP_CONFIG.unspecified}</span>
                       )}

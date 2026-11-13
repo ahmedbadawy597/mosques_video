@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/Button'
+import { VideoPlayer } from '@/components/media/VideoPlayer'
 import { GOVERNORATES } from '@/constants/governorates'
 import { useVideos } from '@/app/providers/VideosProvider'
 import { useVideoFilters } from '@/features/videos/hooks/useVideoFilters'
+import type { VideoRecord } from '@/features/videos/types'
 import { downloadCsv, videosToCsv } from '@/features/videos/utils/csv'
 import { computeVideoStats } from '@/features/videos/utils/stats'
 import { ReportDocument } from './ReportDocument'
@@ -34,6 +36,7 @@ export function ReportsPanel() {
   const [governorate, setGovernorate] = useState('')
   const [date, setDate] = useState('')
   const [previewOpen, setPreviewOpen] = useState(false)
+  const [playingVideo, setPlayingVideo] = useState<VideoRecord | null>(null)
 
   const filters = useMemo(
     () => ({ search, governorate, date }),
@@ -67,9 +70,14 @@ export function ReportsPanel() {
   }
 
   useEffect(() => {
-    if (!previewOpen) return
+    if (!previewOpen && !playingVideo) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setPreviewOpen(false)
+      if (e.key !== 'Escape') return
+      if (playingVideo) {
+        setPlayingVideo(null)
+        return
+      }
+      setPreviewOpen(false)
     }
     const prevOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
@@ -78,7 +86,7 @@ export function ReportsPanel() {
       document.body.style.overflow = prevOverflow
       window.removeEventListener('keydown', onKey)
     }
-  }, [previewOpen])
+  }, [previewOpen, playingVideo])
 
   return (
     <div className="reports-page">
@@ -197,6 +205,7 @@ export function ReportsPanel() {
           stats={stats}
           generatedAt={generatedAt}
           filterSummary={filterSummary}
+          onOpenVideo={setPlayingVideo}
         />
       </div>
 
@@ -246,9 +255,51 @@ export function ReportsPanel() {
                   generatedAt={generatedAt}
                   filterSummary={filterSummary}
                   preview
+                  onOpenVideo={setPlayingVideo}
                 />
               </div>
             </div>
+          </div>
+        </div>
+      ) : null}
+
+      {playingVideo ? (
+        <div
+          className="report-video-backdrop no-print"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="report-video-title"
+          onClick={() => setPlayingVideo(null)}
+        >
+          <div
+            className="report-video-shell surface-card"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <header className="report-video-bar">
+              <div>
+                <p className="reports-kicker">تشغيل الفيديو</p>
+                <h3 id="report-video-title">{playingVideo.name}</h3>
+              </div>
+              <Button
+                type="button"
+                variant="muted"
+                onClick={() => setPlayingVideo(null)}
+                aria-label="إغلاق الفيديو"
+              >
+                <i className="fa-solid fa-xmark" aria-hidden />
+                إغلاق
+              </Button>
+            </header>
+            <VideoPlayer
+              id={playingVideo.id}
+              name={playingVideo.name}
+              videoUrl={playingVideo.videoUrl}
+              videoType={playingVideo.videoType}
+              storyUrl={playingVideo.storyUrl}
+              governorate={playingVideo.governorate}
+              active
+              showGovernorate={false}
+            />
           </div>
         </div>
       ) : null}
